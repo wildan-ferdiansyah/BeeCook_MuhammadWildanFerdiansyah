@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function Footer() {
   return (
     <footer className="w-full overflow-hidden bg-secondary  overflow-x-hidden md:pt-8 pt-6 md:pb-4 px-4 sm:px-6 lg:px-8 scroll-mt-20">
@@ -18,7 +17,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-base font-semibold mb-4 text-default-gray">Partnership</h4>
+          <h4 className="text-base font-semibold mb-4 text-default-gray">
+            Partnership
+          </h4>
           <ul className="space-y-3 text-sm text-default-gray">
             <li>
               <Link href="#" className="hover:text-white transition-colors">
@@ -44,7 +45,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-base font-semibold mb-4 text-default-gray">Bantuan</h4>
+          <h4 className="text-base font-semibold mb-4 text-default-gray">
+            Bantuan
+          </h4>
           <ul className="space-y-3 text-sm text-default-gray">
             <li>
               <Link href="#" className="hover:text-gray-300 transition-colors">
@@ -101,7 +104,6 @@ export default function Footer() {
               className="hover:opacity-80 transition-opacity"
             />
           </Link>
-         
         </div>
       </div>
 

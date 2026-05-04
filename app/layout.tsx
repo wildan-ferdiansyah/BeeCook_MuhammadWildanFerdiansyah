@@ -34,6 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${montSerrat.variable}  h-full antialiased ${inter.className}`}
     >
       <body className="min-h-full flex flex-col bg-white">
