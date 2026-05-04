@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/navbar";
 
@@ -8,9 +8,14 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const montSerrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+})
+
 export const metadata: Metadata = {
   title: {
-    default: "BeeCook",
+    default: "Beranda",
     template: "%s | BeeCook",
   },
   description: "Sebuah resep masakan yang mudah dan lezat untuk semua orang.",
@@ -27,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable}  h-full antialiased ${inter.className}`}
+      className={`${inter.variable} ${montSerrat.variable}  h-full antialiased ${inter.className}`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-white">
         <Navbar />
         {children}
       </body>
