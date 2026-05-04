@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/navbar";
 import { QueryProvider } from "@/providers/query-provider";
+import Footer from "@/components/layouts/footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-white">
         <Navbar />
         <QueryProvider>{children}</QueryProvider>
+        <Footer />
       </body>
     </html>
   );

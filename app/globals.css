@@ -5,6 +5,8 @@
   --foreground: #171717;
   --color-text-menu: #374151;
   --color-primary: #E8B431;
+  --color-secondary: #111827;
+  --color-default-gray: #F8FAFC;
 }
 
 @theme inline {
@@ -12,6 +14,8 @@
   --color-foreground: var(--foreground);
   --color-text-menu: #374151;
   --color-primary: #E8B431;
+  --color-secondary: #111827;
+  --color-default-gray: #F8FAFC;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-montserrat: var(--font-montserrat);
