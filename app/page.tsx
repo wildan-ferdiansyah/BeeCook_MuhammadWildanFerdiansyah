@@ -1,5 +1,6 @@
 import CategorySection from "@/components/sections/category-section";
 import HeroSection from "@/components/sections/hero-section";
+import SubscribeSection from "@/components/sections/subscribe-section";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <HeroSection />
       <CategorySection />
+      <SubscribeSection />
     </>
   );
 }
