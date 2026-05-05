@@ -1,14 +1,7 @@
 "use client";
 import { useCategories } from "@/hooks/use-categories";
+import { ICategory } from "@/types";
 import Image from "next/image";
-
-interface ICategory {
-  id: number;
-  name: string;
-  image: string;
-  slug: string;
-  file_id: string;
-}
 
 function CategorySkeleton() {
   return (

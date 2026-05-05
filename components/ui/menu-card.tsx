@@ -1,10 +1,15 @@
+import { IMenu } from "@/types";
 import { Clock } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function MenuCard({ menu }: any) {
+interface MenuCardProps {
+  menu: IMenu;
+}
+export default function MenuCard({ menu }: MenuCardProps) {
   const image = `https://drive.google.com/uc?export=view&id=${menu.file_id}`;
   return (
-    <div className="bg-white shadow-xl rounded-2xl md:max-w-75 w-full flex flex-col">
+    <Link href={`/menu/${menu.slug}`} className="bg-white shadow-xl rounded-2xl md:max-w-75 w-full flex flex-col">
       <Image
         src={image}
         alt={menu.name}
@@ -22,6 +27,6 @@ export default function MenuCard({ menu }: any) {
         </div>
         <h1 className="mt-4 text-black font-semibold">{menu.name}</h1>
       </div>
-    </div>
+    </Link>
   );
 }

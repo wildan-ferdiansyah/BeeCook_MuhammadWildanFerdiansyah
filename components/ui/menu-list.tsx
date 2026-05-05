@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import MenuSkeleton from "./menu-skeleton";
 import MenuCard from "./menu-card";
 import Pagination from "./pagination";
+import { IMenu } from "@/types";
 
 export default function MenuList() {
   const params = useSearchParams();
@@ -23,7 +24,7 @@ export default function MenuList() {
       <div className="mt-12 grid md:grid-cols-3 grid-cols-1 gap-y-12   w-full">
         {isLoading
           ? Array.from({ length: 6 }).map((_, i) => <MenuSkeleton key={i} />)
-          : data?.menus.map((menu: any) => (
+          : data?.menus.map((menu) => (
               <MenuCard key={menu.id} menu={menu} />
             ))}
       </div>

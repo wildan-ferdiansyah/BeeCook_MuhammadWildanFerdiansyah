@@ -1,3 +1,5 @@
+import { MenuResponse } from "@/types";
+
 export interface IMenuParams {
   page?: number;
   limit?: number;
@@ -10,7 +12,7 @@ export const getMenus = async ({
   limit = 15,
   search = "",
   category_id = "",
-}: IMenuParams) => {
+}: IMenuParams): Promise<MenuResponse> => {
   const url =
     `${process.env.NEXT_PUBLIC_API_URL}/menu` +
     `?page=${page}` +
@@ -25,4 +27,15 @@ export const getMenus = async ({
   const json = await res.json();
 
   return json.data;
+};
+
+export const getMenuSlug = async (slug: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/menu/detail/${slug}`,
+  );
+
+  if (!res.ok) throw new Error("Gagal mengambil data slug menu");
+
+  const json = await res.json();
+  return json.data.menu;
 };

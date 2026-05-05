@@ -6,9 +6,9 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Resep",
+  title: "Menu",
 };
-export default function ResepPage() {
+export default function MenuPage() {
   
   return (
     <>
