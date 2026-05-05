@@ -1,4 +1,4 @@
-import { MenuResponse } from "@/types";
+import { CreateMenuPayload, MenuResponse } from "@/types";
 
 export interface IMenuParams {
   page?: number;
@@ -38,4 +38,64 @@ export const getMenuSlug = async (slug: string) => {
 
   const json = await res.json();
   return json.data.menu;
+};
+
+export const createMenu = async (payload: CreateMenuPayload) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) throw new Error("Gagal membuat menu");
+
+  return res.json();
+};
+
+export const getMenuById = async (id: number) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/menu/find/${id}`,
+  );
+  if (!res.ok) throw new Error("Gagal mengambil detail menu");
+  const json = await res.json();
+  return json.data.menu;
+};
+
+export const updateMenu = async (
+  id: number,
+  payload: Partial<CreateMenuPayload>,
+) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/menu/update/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    },
+  );
+
+  if (!res.ok) throw new Error("Gagal update menu");
+
+  return res.json();
+};
+
+export const uploadMenuImage = async (id: number, file: File) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/menu/upload/${id}`,
+    {
+      method: "PUT",
+      body: formData,
+    },
+  );
+
+  if (!res.ok) throw new Error("Upload gagal");
+
+  return res.json();
 };

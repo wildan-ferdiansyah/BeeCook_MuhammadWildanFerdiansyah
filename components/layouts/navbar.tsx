@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const menuItems = [
   { label: "Beranda", href: "/" },
   { label: "Resep", href: "/menu" },
-  { label: "Kelola", href: "/kelola" },
+  { label: "Kelola", href: "/manage-recipe" },
 ];
 export default function Navbar() {
   const pathname = usePathname();
