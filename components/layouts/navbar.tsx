@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const menuItems = [
   { label: "Beranda", href: "/" },
-  { label: "Resep", href: "/resep" },
+  { label: "Resep", href: "/menu" },
   { label: "Kelola", href: "/kelola" },
 ];
 export default function Navbar() {
@@ -66,7 +66,10 @@ export default function Navbar() {
 
           <nav className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
@@ -101,7 +104,10 @@ export default function Navbar() {
         >
           <nav className="px-4 pt-2 pb-4 space-y-2">
             {menuItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
