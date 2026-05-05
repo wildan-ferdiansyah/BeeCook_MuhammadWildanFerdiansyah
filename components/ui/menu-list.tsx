@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import MenuSkeleton from "./menu-skeleton";
 import MenuCard from "./menu-card";
 import Pagination from "./pagination";
-import { IMenu } from "@/types";
 
 export default function MenuList() {
   const params = useSearchParams();
