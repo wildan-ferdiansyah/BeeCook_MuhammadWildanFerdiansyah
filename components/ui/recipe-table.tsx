@@ -127,7 +127,9 @@ export default function RecipeTable() {
           <span className="text-sm text-black font-medium">of</span>
 
           <div className="flex items-center">
-            <span className="text-base text-black font-semibold">{totalPages}</span>
+            <span className="text-base text-black font-semibold">
+              {totalPages}
+            </span>
             <button
               disabled={page >= totalPages}
               onClick={() => setPage((p) => p + 1)}
