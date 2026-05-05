@@ -1,7 +1,16 @@
 "use client";
 import { useMenus } from "@/hooks/use-menus";
 import { IMenu } from "@/types";
-import { ImageIcon, Loader2, Pencil, Trash2 } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  ImageIcon,
+  Loader2,
+  Pencil,
+  Trash2,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { UploadImageModal } from "../modal/upload-image";
@@ -13,8 +22,9 @@ export default function RecipeTable() {
   const [uploadTarget, setUploadTarget] = useState<IMenu | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<IMenu | null>(null);
 
-  const { data, isLoading } = useMenus({ page, limit: 15 });
+  const { data, isLoading } = useMenus({ page, limit: 4 });
   const menus = data?.menus ?? [];
+  const totalPages = data?.totalPages ?? 1;
   return (
     <div className="space-y-8 mt-8">
       <button
@@ -100,6 +110,35 @@ export default function RecipeTable() {
         </tbody>
       </table>
 
+      {totalPages > 1 && (
+        <div className="flex items-center gap-3">
+          <button
+            disabled={page <= 1}
+            onClick={() => setPage((p) => p - 1)}
+            className="disabled:opacity-30 transition-opacity text-black"
+          >
+            <ChevronsLeft size={20} />
+          </button>
+
+          <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center">
+            <span className="text-base font-semibold text-black">{page}</span>
+          </div>
+
+          <span className="text-sm text-black font-medium">of</span>
+
+          <div className="flex items-center">
+            <span className="text-base text-black font-semibold">{totalPages}</span>
+            <button
+              disabled={page >= totalPages}
+              onClick={() => setPage((p) => p + 1)}
+              className="disabled:opacity-30 transition-opacity text-black"
+            >
+              <ChevronsRight size={20} />
+            </button>
+          </div>
+        </div>
+      )}
+
       {uploadTarget && (
         <UploadImageModal
           menuId={uploadTarget.id}
@@ -107,7 +146,7 @@ export default function RecipeTable() {
         />
       )}
 
-       {deleteTarget && (
+      {deleteTarget && (
         <ConfirmDeleteModal
           menu={deleteTarget}
           onClose={() => setDeleteTarget(null)}
