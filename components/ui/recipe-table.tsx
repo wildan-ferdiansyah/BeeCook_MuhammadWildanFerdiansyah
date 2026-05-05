@@ -5,6 +5,7 @@ import { ImageIcon, Loader2, Pencil, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { UploadImageModal } from "../modal/upload-image";
+import { ConfirmDeleteModal } from "../modal/confirm-delete";
 
 export default function RecipeTable() {
   const router = useRouter();
@@ -103,6 +104,13 @@ export default function RecipeTable() {
         <UploadImageModal
           menuId={uploadTarget.id}
           onClose={() => setUploadTarget(null)}
+        />
+      )}
+
+       {deleteTarget && (
+        <ConfirmDeleteModal
+          menu={deleteTarget}
+          onClose={() => setDeleteTarget(null)}
         />
       )}
     </div>

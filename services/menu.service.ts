@@ -99,3 +99,13 @@ export const uploadMenuImage = async (id: number, file: File) => {
 
   return res.json();
 };
+
+export const deleteMenu = async (id: number) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/menu/delete/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) throw new Error("Gagal menghapus menu");
+  return res.json();
+};
+ 
+

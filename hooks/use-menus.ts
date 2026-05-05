@@ -1,5 +1,6 @@
 import {
   createMenu,
+  deleteMenu,
   getMenuById,
   getMenus,
   IMenuParams,
@@ -52,6 +53,16 @@ export const useUploadMenuImage = () => {
   return useMutation({
     mutationFn: ({ id, file }: any) => uploadMenuImage(id, file),
 
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["menus"] });
+    },
+  });
+};
+
+export const useDeleteMenu = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => deleteMenu(id),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["menus"] });
     },
